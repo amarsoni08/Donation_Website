@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <style>
+        /* Styles specific to the donation page */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: #0f0e0e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+  h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-top: 20px;
+  }
+  
+  .donation-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  /* Additional Styling for Dropdown */
+.donate select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+.donate-box {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Payment Method Section */
+#payment-method-section {
+    margin-top: 20px;
+}
+
+#payment-method-section label {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#qr-code-section {
+    margin-top: 10px;
+    display: none;
+}
+
+#qr-code-section img {
+    max-width: 200px;
+    margin-top: 10px;
+}
+/* Center the image at the top of the donation form */
+.image-section {
+    text-align: center; /* Center align the image */
+    margin-bottom: 20px; /* Space between the image and form */
+}
+
+.donation-image {
+    width: 80%; /* Makes the image take up 80% of the container's width */
+    max-width: 600px; /* Maximum width of the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow to the image */
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-container"></div>
+
+    <!-- Donation Form -->
+    <section class="donate">
+        <div class="image-section">
+            <img src="/logo.jpg" alt="Donation Image" class="donation-image">
+        </div>
+        <div class="donate-box">
+            <form id="donation-form" method="post" action="/donate">
+                <!-- Select Cause Dropdown -->
+                <label for="cause">Donations Open</label>
+                <select id="cause" name="cause" required>
+                    <option value="gokul_mission">RASHTRIYA GOKUL MISSION (Animal Welfare)</option>
+                    <option value="sarva_shiksha">SARVA SHIKSHA ABHIYAN (Child Education)</option>
+                    <option value="balika_samridhi">BALIKA SAMRIDHI YOJANA (Girl Empowerment)</option>
+                    <option value="aapda_mitra">AAPDA MITRA YOJANA (Disaster Victims)</option>
+                    <option value="ayushman_bharat">AYUSHMAN BHARAT (Health Care)</option>
+                    <option value="goonj">GOONJ (Clothes Donation)</option>
+                    <option value="akshaya_patra">AKSHAYA PATRA FOUNDATION (Feed the Need)</option>
+                    <!-- Additional Private and Government NGOs -->
+                    <option value="gov_ngo_1">SMILE FOUNDATION (Helping underprivileged children)</option>
+                    <option value="gov_ngo_2">HELP AGE INDIA (Helping old age  people )</option>
+                </select>
+                 
+                <!-- Enter Donation Name -->
+                <label for="donation_name">Enter Donation Name:</label>
+                <input type="text" id="donation_name" name="donation_name" placeholder="Donation Name" required>
+
+                <!-- Enter Donation Amount -->
+                <label for="amount">Enter Donation Amount (in INR):</label>
+                <input type="number" id="amount" name="amount" placeholder="Amount" required>
+
+                <!-- Display Amount with ₹ Symbol -->
+                <div id="display-amount"></div>
+
+                <!-- Your Name -->
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <!-- Your Email -->
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <!-- Message -->
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                
+                <img width="300px" height="300px"  src="/qr.jpg" alt="qr not found"/>
+
+                <!-- Donate Button -->
+                <button type="submit" id="donate-button" class="btn">Donate Now</button>
+            </form>
+        </div>
+    </section>
+    <!-- <script >
+        document.addEventListener("DOMContentLoaded", () => {
+    // Get elements
+    const amountInput = document.getElementById("amount");
+    const displayAmount = document.getElementById("display-amount");
+    const donationForm = document.getElementById("donation-form");
+    const donateButton = document.getElementById("donate-button");
+    const paymentMethodSection = document.getElementById("payment-method-section");
+    const upiCheckbox = document.getElementById("upi-checkbox");
+    const qrCodeSection = document.getElementById("qr-code-section");
+
+    // Update displayed amount with ₹ symbol dynamically
+    amountInput.addEventListener("input", () => {
+        const value = parseFloat(amountInput.value) || 0;
+        const formattedAmount = value.toLocaleString("en-IN"); // Format amount with commas for INR
+        displayAmount.textContent = `₹${formattedAmount}`; // Display in the input box
+
+        // Update the amount displayed on the Donate button
+        donateButton.textContent = Donate `₹${formattedAmount}`;
+    });
+
+    // Handle form submission
+    donationForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent default form submission
+        alert("Thank you for your donation!");
+        donationForm.reset(); // Reset form fields
+        displayAmount.textContent = "₹0"; // Reset displayed amount
+        donateButton.textContent = "Donate Now"; // Reset Donate button text
+    });
+
+    // Handle the click on Donate Now to show Payment Method Section
+    donateButton.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior on click
+
+        // Show the payment method section
+        paymentMethodSection.style.display = "block"; // Display payment method section
+    });
+
+    // Toggle QR Code section based on UPI checkbox
+    upiCheckbox.addEventListener("change", () => {
+        if (upiCheckbox.checked) {
+            qrCodeSection.style.display = "block"; // Show QR code section
+        } else {
+            qrCodeSection.style.display = "none"; // Hide QR code section
+        }
+    });
+});
+    </script> -->
+</body>
+</html>

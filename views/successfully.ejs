@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Successful</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .success-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .success-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .success-container p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #FFC107;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #FFC107;
+            color: #333;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #FF9800;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .donation-details {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #e0f7fa;
+        }
+
+        .donation-details span {
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .success-container {
+                padding: 20px;
+            }
+
+            .success-container h1 {
+                font-size: 2rem;
+            }
+
+            .success-container p {
+                font-size: 1rem;
+            }
+
+            .success-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">&#10004;</div> <!-- Unicode check mark symbol -->
+        <h1>Donation Successfully Submitted!</h1>
+        <p>Thank you for your generous donation. Your support makes a big difference!</p>
+        <div class="donation-details">
+            <p>Donation Name: <span id="donor-name"><%= donation_name %></span></p>
+            <p>Donor Name: <span id="donor-name"><%= name %></span></p>
+            <p>Donation Amount: <span id="donation-amount">₹<%= amount%></span></p>
+        </div>
+        <form method="get" action="/humanityhub">
+            <button type="submit" class="btn">Back To Home Page</button>
+        </form>
+    </div>
+</body>
+</html>
