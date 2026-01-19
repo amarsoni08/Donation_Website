@@ -12,7 +12,7 @@ app.set("view engine","ejs");
 
 import path from "path";
 
-mongoose.connect("mongodb://localhost:27017",{
+mongoose.connect("MONGODB URL",{
     dbName:"humanityhub",
 }).then(()=>console.log("database connected")).catch((e)=>console.log(e));
 
